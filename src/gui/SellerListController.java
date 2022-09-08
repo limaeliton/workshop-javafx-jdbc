@@ -1,5 +1,6 @@
 package gui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
@@ -15,7 +16,9 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -23,6 +26,8 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.entities.Seller;
 import model.services.SellerService;
@@ -111,29 +116,29 @@ public class SellerListController implements Initializable, DataChangeListener {
 
 	// função para carregar a janela do formulário e preencher um novo departamento.
 	private void createDialogForm(Seller obj, String absoluteName, Stage parentStage) {
-//		try {
-//
-//			FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
-//			Pane pane = loader.load();
-//
-//			DepartmetFormController controller = loader.getController();
-//			controller.setSeller(obj);
-//			controller.setSellerService(new SellerService());
-//			controller.subscribeDataChangeListener(this);
-//			controller.updateFormData();
-//
-//			Stage dialogStage = new Stage();
-//			dialogStage.setTitle("Enter Seller data");
-//			dialogStage.setScene(new Scene(pane)); // o elemento raiz da Scene
-//			dialogStage.setResizable(false); // a janela não vai ser redmensionada
-//			dialogStage.initOwner(parentStage); // o Stage pai da janela
-//			dialogStage.initModality(Modality.WINDOW_MODAL); // a janela vai ficar travada, enquanto não fechar não
-//																// acessa a janela anterior
-//			dialogStage.showAndWait();
-//
-//		} catch (IOException error) {
-//			Alerts.showAlert("IO Exception", "Error loading view", error.getMessage(), AlertType.ERROR);
-//		}
+		try {
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
+			Pane pane = loader.load();
+
+			DepartmetFormController controller = loader.getController();
+			controller.setSeller(obj);
+			controller.setSellerService(new SellerService());
+			controller.subscribeDataChangeListener(this);
+			controller.updateFormData();
+
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Enter Seller data");
+			dialogStage.setScene(new Scene(pane)); // o elemento raiz da Scene
+			dialogStage.setResizable(false); // a janela não vai ser redmensionada
+			dialogStage.initOwner(parentStage); // o Stage pai da janela
+			dialogStage.initModality(Modality.WINDOW_MODAL); // a janela vai ficar travada, enquanto não fechar não
+																// acessa a janela anterior
+			dialogStage.showAndWait();
+
+		} catch (IOException error) {
+			Alerts.showAlert("IO Exception", "Error loading view", error.getMessage(), AlertType.ERROR);
+		}
 	}
 
 	@Override

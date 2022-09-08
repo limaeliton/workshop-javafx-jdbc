@@ -18,18 +18,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import model.entities.Department;
 import model.entities.Seller;
 import model.exception.ValidationException;
-import model.services.DepartmentService;
 import model.services.SellerService;
 
-public class DepartmetFormController implements Initializable {
+public class SellerFormController implements Initializable {
 	// depêndencia
-	private Department entity;
+	private Seller entity;
 
 	// depêndencia
-	private DepartmentService service;
+	private SellerService service;
 	
 	private List<DataChangeListener> dataChangeListeners = new ArrayList<>();
  
@@ -48,11 +46,11 @@ public class DepartmetFormController implements Initializable {
 	@FXML
 	private Button btCancel;
 
-	public void setDepartment(Department entity) {
+	public void setSeller(Seller entity) {
 		this.entity = entity;
 	}
 
-	public void setDepartmentService(DepartmentService service) {
+	public void setSellerService(SellerService service) {
 		this.service = service;
 	}
 	
@@ -89,8 +87,8 @@ public class DepartmetFormController implements Initializable {
 		
 	}
 
-	private Department getFormData() {
-		Department obj = new Department();
+	private Seller getFormData() {
+		Seller obj = new Seller();
 		
 		
 		
@@ -141,16 +139,6 @@ public class DepartmetFormController implements Initializable {
 		if(fields.contains("name")) {
 			labelErrorName.setText(errors.get("name"));
 		}
-		
-	}
-
-	public void setSellerService(SellerService sellerService) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setSeller(Seller obj) {
-		// TODO Auto-generated method stub
 		
 	}
 
