@@ -154,4 +154,14 @@ public class DepartmetFormController implements Initializable {
 		
 	}
 
+	public void setServices(SellerService sellerService, DepartmentService departmentService) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void loadAssociatedObjects() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
